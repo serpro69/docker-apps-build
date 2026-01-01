@@ -6,7 +6,8 @@ IMG_TAG = latest
 
 all: help
 
+help:
+
 alacritty:
 	make -C alacritty RUST_IMG_TAG=$(IMG_TAG)
-
-help:
+	mv alacritty/alacritty build/alacritty

@@ -18,6 +18,6 @@ If you need to build from another OS version for compatibility purposes, add the
 
 - `make alacritty IMG_TAG=bookworm` will build the latest version of [alacritty]() from the `bookworm` rust image tag
 
-The resulting binary is placed in the current directory after build, and will run `./alacritty --version` to verify that it works.
+The resulting binary is placed in the build directory after build, and will run `./alacritty --version` to verify that it works.
 
 For more info see readme files in each app's directory.
