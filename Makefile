@@ -1,10 +1,12 @@
+SHELL=/bin/bash
 .ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
+
+.PHONY: all help alacritty snapraid
 
 DIR         := ${CURDIR}
 CURRENT_UID := $$(id -u)
 CURRENT_GID := $$(id -g)
-
-.PHONY: all help alacritty snapraid
 
 all: help
 
@@ -14,9 +16,9 @@ help:
 # APPS
 
 alacritty:
-	make -C alacritty
+	@$(MAKE) -C alacritty
 	mv alacritty/alacritty build/alacritty
 
 snapraid:
-	make -C snapraid
+	@$(MAKE) -C snapraid
 	mv snapraid/build/* build/

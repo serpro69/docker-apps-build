@@ -1,4 +1,8 @@
+SHELL=/bin/bash
+.SHELLFLAGS := -eu -o pipefail -c
 .ONESHELL:
+
+.PHONY: all build copy
 
 DIR             := ${CURDIR}
 CURRENT_UID     := $$(id -u)
@@ -8,12 +12,10 @@ SNAPRAID_VERSION = $(shell curl --silent "https://api.github.com/repos/amadvance
 TARGET           = debian # or redhat
 PLATFORM         = linux/amd64
 
-.PHONY: all build copy
-
 all: build copy
 
 build:
-	@docker build --platform $(PLATFORM) -f dockerfile-$(TARGET) --build-arg TAG=$(DEBIAN_IMG_TAG) --build-arg VERSION=$(SNAPRAID_VERSION) --no-cache -t snapraid .
+	@docker build --platform $(PLATFORM) -f dockerfile-$(TARGET) --build-arg TAG=$(DEBIAN_IMG_TAG) --build-arg VERSION=$(SNAPRAID_VERSION) -t snapraid .
 
 copy:
 	@ID=$$(docker create --platform $(PLATFORM) snapraid)
