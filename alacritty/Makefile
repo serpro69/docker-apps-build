@@ -3,6 +3,8 @@ CURRENT_UID := $$(id -u)
 CURRENT_GID := $$(id -g)
 RUST_IMG_TAG = latest
 
+.PHONY: all build copy clean master check install
+
 all: build copy
 
 build:

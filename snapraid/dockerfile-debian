@@ -1,0 +1,26 @@
+ARG TAG="trixie"
+
+FROM debian:${TAG}
+
+ARG TAG
+ARG VERSION
+
+# Builds SnapRAID from source
+RUN apt update && \
+  apt install -y \
+  gcc \
+  git \
+  make \
+  checkinstall \
+  curl \
+  libblkid1
+
+RUN curl -LO https://github.com/amadvance/snapraid/releases/download/v${VERSION}/snapraid-${VERSION}.tar.gz && \
+  tar -xvf snapraid-${VERSION}.tar.gz && \
+  cd snapraid-${VERSION} && \
+  ./configure && \
+  make && \
+  make check && \
+  checkinstall -Dy --install=no --nodoc && \
+  mkdir /build && \
+  cp *.deb /build/snapraid_${VERSION}_${TAG}.deb

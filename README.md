@@ -1,10 +1,15 @@
-# alacritty-docker-build
+# docker-apps-build
 
-Build apps binaries locally without installing any build dependencies.
+Build apps binaries/installers locally without any build dependencies.
 
 ## About
 
 These docker builds allows you to compile the latest versions of various apps from source without having to install any dependencies in your environment.
+
+### Available Builds
+
+- [alacritty](./alacritty) - a modern terminal emulator that comes with sensible defaults, but allows for extensive configuration.
+- [snapraid](./snapraid) - backup program designed for disk arrays, primarily intended for home media centers with large, infrequently changing files.
 
 ## Requirements
 

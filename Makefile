@@ -1,13 +1,22 @@
-DIR := ${CURDIR}
+.ONESHELL:
+
+DIR         := ${CURDIR}
 CURRENT_UID := $$(id -u)
 CURRENT_GID := $$(id -g)
-IMG_TAG = latest
-.PHONY: all help alacritty
+
+.PHONY: all help alacritty snapraid
 
 all: help
 
 help:
+	echo "TODO"
+
+# APPS
 
 alacritty:
-	make -C alacritty RUST_IMG_TAG=$(IMG_TAG)
+	make -C alacritty
 	mv alacritty/alacritty build/alacritty
+
+snapraid:
+	make -C snapraid
+	mv snapraid/build/* build/
